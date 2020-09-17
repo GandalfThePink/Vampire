@@ -9,45 +9,45 @@ import "@openzeppelin/contracts/utils/Address.sol";
 
 contract BloodVial is IERC20, Ownable{ // we start from IERC20 since we need to redefine a lot of the basic ERC20
 	
-	using SafeMath for uint256;
-	using Address for address;
+    using SafeMath for uint256;
+    using Address for address;
 	
-	uint256 private _dropsOfBloodPerVial; 
+    uint256 private _dropsOfBloodPerVial; 
 	
-	// balance are denominated in dropsOfBlood, those poured into value stable bloodVials
+    // balance are denominated in dropsOfBlood, those poured into value stable bloodVials
 	
     mapping (address => uint256) private _balances;  
 
     mapping (address => mapping (address => uint256)) private _allowances;
 	
-	uint256 private _totalSupply;
+    uint256 private _totalSupply;
     string private _name;
     string private _symbol;
     uint8 private _decimals;
 	
-	address public controller;
-	
-	// the controller is able to mint and burn tokens. This is to be given to the VampireContract after deployment.
-	modifier onlyController() {
-	        require(msg.sender == controller, "You are not calling from controller address");
-	        _;
-	    }
+    address public controller;
+ 	
+    // the controller is able to mint and burn tokens. This is to be given to the VampireContract after deployment.
+    modifier onlyController() {
+	require(msg.sender == controller, "You are not calling from controller address");
+	_;
+    }
 	
     event Rebase(
          uint256 fractionalIncreasePermille 
     );
 	
-	constructor() public {
-		_dropsOfBloodPerVial = 1000;
-		_name = "BloodVials";
-		_symbol = "Vials";
-		_decimals = 18;
-	    _mint(msg.sender, 10 * 10**18 );
-		controller = msg.sender;
-	}
+    constructor() public {
+	_dropsOfBloodPerVial = 1000;
+	_name = "BloodVials";
+	_symbol = "Vials";
+	_decimals = 18;
+	_mint(msg.sender, 10 * 10**18 );
+ 	controller = msg.sender;
+    }
 	
 	
-	// reproduce basic ERC20
+    // reproduce basic ERC20
 	
     function name() public view returns (string memory) {
         return _name;
@@ -81,7 +81,7 @@ contract BloodVial is IERC20, Ownable{ // we start from IERC20 since we need to 
         _transfer(sender, recipient, amount);
         _approve(sender, _msgSender(), _allowances[sender][_msgSender()].sub(amount, "ERC20: transfer amount exceeds allowance"));
         
-		return true;
+	return true;
     }
     
 	
@@ -108,7 +108,7 @@ contract BloodVial is IERC20, Ownable{ // we start from IERC20 since we need to 
     function _mint(address account, uint256 amount) internal {
         require(account != address(0), "ERC20: mint to the zero address");
 
-		uint256 numberFragments = amount.mul(_dropsOfBloodPerVial);	
+	uint256 numberFragments = amount.mul(_dropsOfBloodPerVial);	
 
         _totalSupply = _totalSupply.add(numberFragments);
         _balances[account] = _balances[account].add(numberFragments);
@@ -118,7 +118,7 @@ contract BloodVial is IERC20, Ownable{ // we start from IERC20 since we need to 
     function _burn(address account, uint256 amount) internal {
         require(account != address(0), "ERC20: burn from the zero address");
 
-		uint256 numberFragments = amount.mul(_dropsOfBloodPerVial);	
+	uint256 numberFragments = amount.mul(_dropsOfBloodPerVial);	
 		
         _balances[account] = _balances[account].sub(numberFragments, "ERC20: burn amount exceeds balance");
         _totalSupply = _totalSupply.sub(numberFragments);
@@ -129,7 +129,7 @@ contract BloodVial is IERC20, Ownable{ // we start from IERC20 since we need to 
         require(sender != address(0), "ERC20: transfer from the zero address");
         require(recipient != address(0), "ERC20: transfer to the zero address");
 
-		uint256 numberFragments = amount.mul(_dropsOfBloodPerVial);
+	uint256 numberFragments = amount.mul(_dropsOfBloodPerVial);
 
         _balances[sender] = _balances[sender].sub( numberFragments, "ERC20: transfer amount exceeds balance");
         _balances[recipient] = _balances[recipient].add( numberFragments);
@@ -151,25 +151,25 @@ contract BloodVial is IERC20, Ownable{ // we start from IERC20 since we need to 
            
         _dropsOfBloodPerVial = _dropsOfBloodPerVial.mul(fractionalIncreasePermille).div(1000); 
 		  
-		emit Rebase(fractionalIncreasePermille);
-		return true;
+	emit Rebase(fractionalIncreasePermille);
+	return true;
     }
 	
     function mint(address account, uint256 amount) public onlyController returns (bool) {
         _mint(account,amount);
-		return true;
+	return true;
     }
 	
     function burn(address account, uint256 amount) public onlyController returns (bool) {
         _burn(account,amount);
-		return true;
+	return true;
     }
 	
 	// allows the transfer of the contoller by the owner
 	
-	function setController(address new_controller) public onlyOwner returns (bool) {
-		controller = new_controller;
+    function setController(address new_controller) public onlyOwner returns (bool) {
+	controller = new_controller;
 		
-	}
+    }
 	
 }
