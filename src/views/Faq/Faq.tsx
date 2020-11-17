@@ -32,6 +32,7 @@ const Faq: React.FC = () => {
       <Container>
         <Card>
           <CardContent>
+            
             <Question
               active={activeSlug === "home"}
               question="What is supervillain.finance?"
@@ -42,7 +43,7 @@ const Faq: React.FC = () => {
 			    The assumed risk for the long holders is employed to guarantee price stability for the stablecoin holders. The protocoll acts entirely onchain
 			    and nobody has any special priviledges. 
 			    <br />
-			    <b> Right now this is only an early test version. Use only to experiment with the smart contracts and do not deposit significant capital. There will probably be bugs!</b> 
+			    <b> Right now this is only an early test version. Use only to experiment with the smart contracts and be carefull depositing funds. There may be bugs!</b> 
 			  </span>
             </Question>
             <Question
@@ -56,6 +57,23 @@ const Faq: React.FC = () => {
             </Question>
             <Question
               active={activeSlug === "home"}
+              question="How are superVillains trained?"
+              slug="home"
+            >
+              <span>
+			    Anyone can train freshly minted SuperVillain governance tokens by providing liquidity for 🩸 and 🧛🏼‍♂️ on uniswap. <br />
+			    First, obtain 🩸 or 🧛🏼‍♂️ tokens from uniswap (make sure uniswap prices are accurate!), 
+			    or via the EtherRitual minting new 🩸 and 🧛🏼‍♂️ tokens. <br />
+			    Second, supply those in the respective uniswap pool paired with ether (links found in the dojo). <br />
+			    Finally deposit the liquidity token in our farming contracts (also found in the dojo). <br />
+			    Each block starting from Monday 23rd November 2020 will generate two superVillain tokens distributed to the liquidity providers. The initial farming will end with the deployment of version 1.0 at a yet 
+			    unspecified date. At that point SuperVillains will be usuable in the governance of the protocoll. Please note that Supervillain tokens have no value and only provide voting rights, with the sole goal to 
+			    allow users of the protocoll to self-govern. The supply is inflationary, with a constant initial issuence and a planned fixed fractional issuence in v1.0. <br /> 
+			    There is no guanrantee v1.0 will ever be completed, meaning there is no guarantee that superVillain tokens will ever have a usecase.   
+	          </span>
+            </Question>  
+            <Question
+              active={activeSlug === "home"}
               question="What is the point of creating a stablecoin linked to the value of DAI? Why not just use DAI?"
               slug="home"
             >
@@ -67,12 +85,12 @@ const Faq: React.FC = () => {
             </Question>
             <Question
               active={activeSlug === "home"}
-              question="What do the rituals do?"
+              question="What are rituals?"
               slug="home"
             >
               <span>
-			    First, as a normal user you never need to use those. You can buy and sell 🩸 and 🧛🏼‍♂️ on uniswap and passively enjoy their value developement compared to ether.
-			    Only make sure that the price is close enough to the prices we estimated on this page. <br />
+			    As a normal user you never need to use those. You can buy and sell 🩸 and 🧛🏼‍♂️ on uniswap and passively enjoy their value developement compared to ether.
+			    Only make sure that the price is close enough to the prices we estimated on the trade page. <br />
 			   
 			    We have four rituals for advanced users. First the blood ritual is the heart of the protocoll. It can be called at most once per hour
 			    and tries to stabilise the price of 🩸 via programatic trading of the reserves on uniswap. <br />

@@ -17,7 +17,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ onDismiss, visible }) => {
           <StyledRouterLink exact activeClassName="active" to="/" onClick={onDismiss}>Home</StyledRouterLink>
           <StyledRouterLink exact activeClassName="active" to="/trade" onClick={onDismiss}>Trade</StyledRouterLink>
           <StyledRouterLink exact activeClassName="active" to="/rituals" onClick={onDismiss}>Rituals</StyledRouterLink>
-          <StyledRouterLink exact activeClassName="active" to="/farm" onClick={onDismiss}>Farm</StyledRouterLink>
+          <StyledRouterLink exact activeClassName="active" to="/dojo" onClick={onDismiss}>Dojo</StyledRouterLink>
           <StyledRouterLink exact activeClassName="active" to="/governance" onClick={onDismiss}>Governance</StyledRouterLink>
           <StyledRouterLink exact activeClassName="active" to="/faq" onClick={onDismiss}>FAQ</StyledRouterLink>
         </StyledMobileMenu>
