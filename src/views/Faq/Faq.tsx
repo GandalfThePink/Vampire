@@ -61,15 +61,15 @@ const Faq: React.FC = () => {
               slug="home"
             >
               <span>
-			    Anyone can train freshly minted SuperVillain governance tokens by providing liquidity for 🩸 and 🧛🏼‍♂️ on uniswap. <br />
+			    Anyone can train freshly minted superVillain governance tokens (🦹) by providing liquidity for 🩸 and 🧛🏼‍♂️ on uniswap. <br />
 			    First, obtain 🩸 or 🧛🏼‍♂️ tokens from uniswap (make sure uniswap prices are accurate!), 
 			    or via the EtherRitual minting new 🩸 and 🧛🏼‍♂️ tokens. <br />
 			    Second, supply those in the respective uniswap pool paired with ether (links found in the dojo). <br />
 			    Finally deposit the liquidity token in our farming contracts (also found in the dojo). <br />
-			    Each block starting from Monday 23rd November 2020 will generate two superVillain tokens distributed to the liquidity providers. The initial farming will end with the deployment of version 1.0 at a yet 
-			    unspecified date. At that point SuperVillains will be usuable in the governance of the protocoll. Please note that Supervillain tokens have no value and only provide voting rights, with the sole goal to 
+			    Each block starting from Monday 23rd November 2020 will generate two 🦹 distributed to the liquidity providers. The initial farming will end with the deployment of version 1.0 at a yet 
+			    unspecified date. At that point 🦹 will be usuable in the governance of the protocoll. Please note that 🦹 have no value and only provide voting rights, with the sole goal to 
 			    allow users of the protocoll to self-govern. The supply is inflationary, with a constant initial issuence and a planned fixed fractional issuence in v1.0. <br /> 
-			    There is no guanrantee v1.0 will ever be completed, meaning there is no guarantee that superVillain tokens will ever have a usecase.   
+			    There is no guanrantee v1.0 will ever be completed, meaning there is no guarantee that 🦹 will ever have a usecase.   
 	          </span>
             </Question>  
             <Question
