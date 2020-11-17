@@ -10,10 +10,10 @@ import Nav from './components/Nav'
 import WalletButton from './components/WalletButton'
 
 interface TopBarProps {
-  
+  onPresentMobileMenu: () => void
 }
 
-const TopBar: React.FC<TopBarProps> = () => {
+const TopBar: React.FC<TopBarProps> = ({ onPresentMobileMenu }) => {
   return (
     <StyledTopBar>
       <Container size="lg">
@@ -27,7 +27,7 @@ const TopBar: React.FC<TopBarProps> = () => {
           <StyledAccountButtonWrapper>
             <WalletButton />
           </StyledAccountButtonWrapper>
-          <StyledMenuButton>
+          <StyledMenuButton onClick={onPresentMobileMenu}>
             <MenuIcon />
           </StyledMenuButton>
         </StyledTopBarInner>

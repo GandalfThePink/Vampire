@@ -102,6 +102,7 @@ const Rituals: React.FC = () => {
             <CardActions>
               <Box row justifyContent="center">
                 <Button
+			      full
                   onClick={handleSilverBulletClick}
                   text="Silver Bullet"
                   variant="secondary"
@@ -124,8 +125,10 @@ const Rituals: React.FC = () => {
             <CardActions>
               <Box row justifyContent="center">
                 <Button
+			      full
 			      disabled
                   text="Silver Bullet"
+			      variant="secondary"
                 />
               </Box>
             </CardActions>	 
@@ -148,6 +151,7 @@ const Rituals: React.FC = () => {
             <CardActions>
               <Box row justifyContent="center">
                 <Button
+			      full
                   onClick={handleEtherClick}
                   text="Ether Ritual"
                   variant="secondary"
@@ -169,8 +173,10 @@ const Rituals: React.FC = () => {
           <CardActions>
             <Box row justifyContent="center">
               <Button
+			    full
 			    disabled
                 text="Ether Ritual"
+			    variant="secondary"
               />
             </Box>
           </CardActions>
@@ -208,6 +214,7 @@ const Rituals: React.FC = () => {
           <CardActions>
             <Box row justifyContent="center">
               <Button
+		        full
                 onClick={handleBloodGarlicClick}
                 text="Poison Vampires"
                 variant="secondary"

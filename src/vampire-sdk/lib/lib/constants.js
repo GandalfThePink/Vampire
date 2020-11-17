@@ -24,4 +24,6 @@ export const INTEGERS = {
 export const addressMap = {
   uniswapFactoryV2: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
   WETH : "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+  uniVial: "0xcf17a4d78D2236d9Ed7d1A785D0E3CDFf12B109F",
+  uniVamp: "0x9e7AbF31E9172144E02f501f272a03807aB148b4",	
 }

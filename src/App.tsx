@@ -7,13 +7,16 @@ import {
 } from 'react-router-dom'
 
 
+
 import TopBar from './components/TopBar'
 import PageHeader from './components/PageHeader'
 import Page from './components/Page'
+import MobileMenu from './components/MobileMenu'
 
 import { UseWalletProvider } from 'use-wallet';
 import { BalancesProvider } from './contexts/Balances'
 import { VampireStatsProvider } from './contexts/VampireStats'
+import { FarmingProvider} from './contexts/Farming'
 import { RitualProvider} from './contexts/RitualProvider'
 import  VampireProvider  from './contexts/VampireProvider'
 
@@ -21,6 +24,7 @@ import Home from './views/Home'
 import Faq from './views/Faq'
 import Trade from './views/Trade'
 import Rituals from './views/Rituals'
+import Farm from './views/Farm'
 
 
 const ASTRONAUTS = [
@@ -54,12 +58,23 @@ const App: React.FC = () => {
       const refresh = setInterval(updateAstronaut, 800)
       return () => clearInterval(refresh)
   }, [updateAstronaut])	
+  
+  const [mobileMenu, setMobileMenu] = useState(false)
+
+  const handleDismissMobileMenu = useCallback(() => {
+    setMobileMenu(false)
+  }, [setMobileMenu])
+
+  const handlePresentMobileMenu = useCallback(() => {
+    setMobileMenu(true)
+  }, [setMobileMenu])
   	
   return (
 
     <Router>
       <Providers>
-	    <TopBar/> 
+        <TopBar onPresentMobileMenu={handlePresentMobileMenu} />
+        <MobileMenu onDismiss={handleDismissMobileMenu} visible={mobileMenu} />
 	    <Switch>
           <Route exact path="/">
             <Home /> 
@@ -71,20 +86,14 @@ const App: React.FC = () => {
           <Route exact path="/rituals"> 
  		    <Rituals /> 
           </Route>
-          <Route exact path="/farm"> 
-	       <Page>
-            <PageHeader
-              icon='👩‍🌾'
-              subtitle="Coming soon!"
-              title="Farming"
-            />
-		   </Page>	
+          <Route exact path="/dojo"> 
+	       <Farm />	
           </Route>
           <Route exact path="/governance"> 
 	       <Page>
 	        <PageHeader
 	          icon={`${astronaut}`}
-	          subtitle="Coming soon!"
+	          subtitle="Under Developement!"
 	          title="Governance"
 	        />	
 	       </Page>
@@ -123,7 +132,9 @@ const Providers: React.FC = ({ children }) => {
 	      <BalancesProvider>
 	  		<VampireStatsProvider>
 	  		  <RitualProvider>
-                {children}
+	            <FarmingProvider>
+                  {children}
+	            </FarmingProvider>
 			  </RitualProvider>
 			</VampireStatsProvider>
 		  </BalancesProvider>

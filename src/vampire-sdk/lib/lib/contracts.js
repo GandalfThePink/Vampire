@@ -1,9 +1,14 @@
 import BigNumber from 'bignumber.js/bignumber';
 //import Web3 from 'web3';
 import * as Types from "./types.js";
-import { SUBTRACT_GAS_LIMIT } from './constants.js';
+import { SUBTRACT_GAS_LIMIT ,addressMap} from './constants.js';
 
 import VampireJson from '../clean_buildContracts/Vampire.json';
+import VialJson from '../clean_buildContracts/BloodVial.json';
+import UniJson from '../clean_buildContracts/IUniswapV2Pair.json';
+
+import VialPoolJson from '../clean_buildContracts/InitialDistributionVial.json';
+import VampPoolJson from '../clean_buildContracts/InitialDistributionVamp.json';
 
 export class Contracts {
   constructor(
@@ -20,6 +25,13 @@ export class Contracts {
     this.defaultGasPrice = options.defaultGasPrice;
 
     this.vampire = new this.web3.eth.Contract(VampireJson.abi);
+	this.vial_pool = new this.web3.eth.Contract(VialPoolJson.abi);
+	this.vamp_pool = new this.web3.eth.Contract(VampPoolJson.abi);
+	
+	this.vial = new this.web3.eth.Contract(VialJson.abi);
+	this.uniVial = new this.web3.eth.Contract(UniJson.abi);
+	this.uniVamp = new this.web3.eth.Contract(UniJson.abi);
+	
 	
     this.setProvider(provider, networkId);
     this.setDefaultAccount(this.web3.eth.defaultAccount);
@@ -33,6 +45,11 @@ export class Contracts {
     this.vampire.setProvider(provider);
     const contracts = [
       { contract: this.vampire, json: VampireJson },
+      { contract: this.vial, json: VialJson },
+      { contract: this.vial_pool, json: VialPoolJson },
+	  { contract: this.vamp_pool, json: VampPoolJson },
+      { contract: this.uniVial, json: UniJson },
+      { contract: this.uniVamp, json: UniJson },
     ]
 
     contracts.forEach(contract => this.setContractProvider(
@@ -43,7 +60,12 @@ export class Contracts {
       ),
     );
     
+	this.uniVial.options.address = addressMap["UniVial"];  // needs to be removed (no updated to actualu pool address)
+	this.uniVamp.options.address = addressMap["UniVamp"];  // needs to be removed (no updated to actualu pool address)
+	
     this.pools = [
+		{"tokenAddr": this.uniVial.options.address, "poolAddr": this.vial_pool.options.address},
+		{"tokenAddr": this.uniVamp.options.address, "poolAddr": this.vamp_pool.options.address},
     ]
 
     this.names = {};

@@ -64,9 +64,10 @@ const Trade: React.FC = () => {
               <CardActions>
                 <Box row justifyContent="center">
                   <Button
+		            full
                     href="https://app.uniswap.org/#/swap?outputCurrency=0xffDD4d26C91752d4f7AEfa4d50737212126c04A2&inputCurrency=0x6b175474e89094c44da98b954eedeac495271d0f&exactAmount=1&theme=dark"
                     text="Uniswap DAI-🩸"
-                    variant="secondary"
+                    variant="tertiary"
                   />
                 </Box>
               </CardActions>
@@ -88,9 +89,10 @@ const Trade: React.FC = () => {
               <CardActions>
                 <Box row justifyContent="center">
                   <Button
+					full
                     href="https://app.uniswap.org/#/swap?outputCurrency=0x6457AA01f871754e6907B42CBCaF09383eFf60aC&exactAmount=1&theme=dark"
                     text="Uniswap ETH-🧛🏼‍♂️"
-                    variant="secondary"
+                    variant="tertiary"
                   />
                 </Box>
               </CardActions>
